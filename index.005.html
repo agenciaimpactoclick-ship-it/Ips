@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impacto Click | Tráfego Pago para Hotelaria, Pousadas e Restaurantes</title>
+<meta name="description" content="Agência de tráfego pago especializada em hotéis, pousadas, hostels, restaurantes, fast food, delivery e quiosques. Mais hóspedes, mais pedidos, mais mesas ocupadas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --cream:#f7f6f1;
+    --navy:#000066;
+    --navy-light:#3030a8;
+    --navy-soft:rgba(0,0,102,.06);
+    --ink:#0a0a0a;
+    --ink-soft:#5c5c66;
+    --line:#e4e2dc;
+    --good:#1f8a4c;
+    --radius:20px;
+    --maxw:1180px;
+  }
+
+  *{margin:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;padding:0;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+    color:var(--ink);
+  }
+  em{font-style:italic;font-weight:500;color:var(--navy);}
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--navy);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px;height:8px;border-radius:50%;
+    background:var(--navy);
+    display:inline-block;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;font-size:.95rem;
+    padding:15px 28px;
+    border-radius:999px;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--navy);color:var(--white);}
+  .btn-primary:hover{background:var(--navy-light);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy);color:var(--white);transform:translateY(-2px);}
+  .btn-light{background:var(--white);color:var(--navy);}
+  .btn-light:hover{background:var(--cream);transform:translateY(-2px);}
+  .btn:focus-visible{outline:3px solid var(--navy-light);outline-offset:2px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .logo-img{
+    height:34px;width:auto;display:block;
+  }
+  .footer-top .logo-img{height:44px;}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{
+    font-size:.92rem;font-weight:500;color:var(--ink-soft);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--navy);}
+  .nav-cta{display:flex;}
+  .nav-toggle{display:none;}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:160px 0 90px;
+    background:
+      radial-gradient(900px 500px at 85% -10%, var(--navy-soft), transparent 60%),
+      var(--white);
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;
+  }
+  .hero-content{text-align:left;max-width:560px;}
+  .hero-content .eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(2.4rem,4.6vw,3.85rem);
+    margin-bottom:22px;
+  }
+  .hero p.lead{
+    font-size:1.06rem;color:var(--ink-soft);
+    max-width:480px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
+  .hero-note{
+    font-family:'Space Mono',monospace;
+    font-size:.78rem;color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding-top:18px;max-width:480px;
+  }
+
+  /* ---------- Interactive panel (signature element) ---------- */
+  .panel{
+    background:var(--navy);
+    color:var(--white);
+    border-radius:var(--radius);
+    padding:26px;
+    box-shadow:0 30px 70px -25px rgba(0,0,102,.55);
+  }
+  .panel-head{
+    display:flex;flex-direction:column;gap:14px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    padding-bottom:18px;margin-bottom:18px;
+  }
+  .panel-title{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Space Mono',monospace;
+    font-size:.78rem;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(255,255,255,.78);
+  }
+  .live-dot{
+    width:9px;height:9px;border-radius:50%;background:#42e08a;
+    box-shadow:0 0 0 0 rgba(66,224,138,.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(66,224,138,.55);}
+    70%{box-shadow:0 0 0 8px rgba(66,224,138,0);}
+    100%{box-shadow:0 0 0 0 rgba(66,224,138,0);}
+  }
+  .panel-tabs{
+    display:flex;gap:6px;flex-wrap:wrap;
+  }
+  .panel-tab{
+    font-family:'Inter',sans-serif;
+    font-size:.78rem;font-weight:600;
+    padding:8px 14px;border-radius:999px;
+    background:rgba(255,255,255,.08);
+    color:rgba(255,255,255,.75);
+    border:1px solid transparent;
+    cursor:pointer;transition:all .2s ease;
+  }
+  .panel-tab:hover{background:rgba(255,255,255,.16);color:var(--white);}
+  .panel-tab.active{
+    background:var(--white);color:var(--navy);
+  }
+  .panel-tab:focus-visible{outline:2px solid #42e08a;outline-offset:2px;}
+
+  .panel-controls{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    margin-bottom:22px;padding-bottom:22px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .panel-control-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:10px;
+  }
+  .panel-control-label{
+    font-size:.76rem;color:rgba(255,255,255,.62);
+  }
+  .panel-control-value{
+    font-family:'Space Mono',monospace;font-size:.86rem;font-weight:700;
+    color:var(--white);
+  }
+  .panel-slider{
+    -webkit-appearance:none;appearance:none;
+    width:100%;height:4px;border-radius:999px;
+    background:rgba(255,255,255,.18);
+    outline:none;cursor:pointer;
+  }
+  .panel-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:18px;height:18px;border-radius:50%;
+    background:#42e08a;border:3px solid var(--navy);
+    box-shadow:0 0 0 1px rgba(255,255,255,.4);
+    cursor:pointer;
+  }
+  .panel-slider::-moz-range-thumb{
+    width:18px;height:18px;border-radius:50%;border:3px solid var(--navy);
+    background:#42e08a;box-shadow:0 0 0 1px rgba(255,255,255,.4);cursor:pointer;
+  }
+  .panel-metrics{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;
+  }
+  .metric{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px;padding:16px;
+  }
+  .metric-label{
+    font-size:.74rem;color:rgba(255,255,255,.62);
+    margin-bottom:8px;display:block;
+  }
+  .metric-value{
+    font-family:'Space Mono',monospace;
+    font-size:1.55rem;font-weight:700;
+    display:block;margin-bottom:6px;
+  }
+  .metric-delta{
+    font-family:'Space Mono',monospace;
+    font-size:.74rem;font-weight:700;
+    padding:2px 8px;border-radius:6px;
+    display:inline-block;
+  }
+  .metric-delta.good{background:rgba(66,224,138,.18);color:#7CF0AA;}
+
+  .panel-chart-label{
+    font-size:.76rem;color:rgba(255,255,255,.62);margin-bottom:12px;
+  }
+  .panel-chart{
+    display:flex;align-items:flex-end;gap:14px;height:120px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    padding-bottom:0;
+  }
+  .chart-group{
+    flex:1;display:flex;align-items:flex-end;gap:4px;height:100%;
+  }
+  .bar{
+    flex:1;border-radius:4px 4px 0 0;
+    transition:height .7s cubic-bezier(.4,0,.2,1);
+  }
+  .bar.invest{background:rgba(255,255,255,.22);}
+  .bar.retorno{background:#42e08a;}
+  .chart-months{
+    display:flex;gap:14px;margin-top:8px;
+  }
+  .chart-months span{
+    flex:1;text-align:center;font-family:'Space Mono',monospace;
+    font-size:.66rem;color:rgba(255,255,255,.45);
+  }
+  .panel-legend{
+    display:flex;gap:18px;margin-top:14px;
+    font-family:'Space Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.6);
+  }
+  .panel-legend span{display:flex;align-items:center;gap:6px;}
+  .legend-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+  .panel-foot{
+    margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);
+    font-family:'Inter',sans-serif;
+  }
+
+  /* ---------- Generic sections ---------- */
+  section{padding:90px 0;}
+  .section-cream{background:var(--cream);}
+  .section-head{
+    text-align:center;max-width:620px;margin:0 auto 56px;
+  }
+  .section-head .eyebrow{justify-content:center;margin-bottom:16px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;}
+
+  /* ---------- Niches grid ---------- */
+  .niches{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .niche-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .niche-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -28px rgba(0,0,102,.35);
+    border-color:var(--navy);
+  }
+  .niche-icon{
+    width:46px;height:46px;border-radius:12px;
+    background:var(--navy-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;color:var(--navy);
+  }
+  .niche-card h3{font-size:1.12rem;margin-bottom:8px;font-weight:600;}
+  .niche-card p{color:var(--ink-soft);font-size:.92rem;}
+
+  .services-cta{
+    text-align:center;margin-top:36px;
+  }
+
+  /* ---------- Process ---------- */
+  .process{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    position:relative;
+  }
+  .process-step{
+    text-align:center;padding:0 18px;position:relative;
+  }
+  .process-step::before{
+    content:'';position:absolute;top:27px;left:-9px;right:calc(100% - 9px);
+    height:1px;background:var(--line);
+  }
+  .process-step:first-child::before{display:none;}
+  .step-num{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--navy);color:var(--white);
+    font-family:'Space Mono',monospace;font-weight:700;font-size:1.05rem;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;position:relative;z-index:1;
+  }
+  .process-step h3{font-size:1.05rem;margin-bottom:10px;}
+  .process-step p{color:var(--ink-soft);font-size:.92rem;}
+
+  /* ---------- Stat strip ---------- */
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:24px;text-align:center;
+  }
+  .stat-num{
+    font-family:'Space Mono',monospace;font-weight:700;
+    font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);
+    margin-bottom:6px;
+  }
+  .stat-label{color:var(--ink-soft);font-size:.88rem;}
+
+  /* ---------- Simulador de investimento ---------- */
+  .calc{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px;max-width:880px;margin:0 auto;
+  }
+  .calc-tabs{
+    display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+    margin-bottom:36px;
+  }
+  .calc-tab{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;
+    padding:10px 18px;border-radius:999px;
+    border:1.5px solid var(--line);background:var(--white);
+    color:var(--ink-soft);cursor:pointer;
+    transition:all .2s ease;
+  }
+  .calc-tab:hover{border-color:var(--navy);color:var(--navy);}
+  .calc-tab.active{
+    background:var(--navy);border-color:var(--navy);color:var(--white);
+  }
+  .calc-tab:focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  .calc-body{
+    display:grid;grid-template-columns:1fr auto 1fr;
+    gap:28px;align-items:center;
+  }
+  .calc-label{
+    font-family:'Space Mono',monospace;font-size:.74rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-soft);display:block;margin-bottom:18px;
+  }
+  .calc-label.light{color:rgba(255,255,255,.62);}
+
+  .calc-chips{
+    display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .calc-chip{
+    font-family:'Space Mono',monospace;font-size:.86rem;font-weight:700;
+    padding:10px 16px;border-radius:12px;
+    border:1.5px solid var(--line);background:var(--white);
+    color:var(--ink);cursor:pointer;
+    transition:all .2s ease;
+  }
+  .calc-chip:hover{border-color:var(--navy);color:var(--navy);}
+  .calc-chip.active{
+    background:var(--navy);border-color:var(--navy);color:var(--white);
+    box-shadow:0 10px 22px -12px rgba(0,0,102,.5);
+  }
+  .calc-chip:focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+
+  .calc-amount{
+    font-family:'Space Mono',monospace;font-weight:700;
+    font-size:1.7rem;color:var(--navy);min-width:150px;text-align:center;
+  }
+
+  .calc-arrow{
+    font-size:1.6rem;color:var(--navy);text-align:center;
+  }
+
+  .calc-result{
+    background:var(--navy);color:var(--white);
+    border-radius:16px;padding:26px;text-align:center;
+  }
+  .calc-result-value{
+    font-family:'Space Mono',monospace;font-weight:700;
+    font-size:1.85rem;margin-bottom:10px;
+  }
+  .calc-roas{
+    font-family:'Space Mono',monospace;font-size:.78rem;
+    color:#7CF0AA;
+  }
+
+  .calc-note{
+    text-align:center;color:var(--ink-soft);font-size:.86rem;
+    max-width:620px;margin:28px auto 0;
+  }
+
+  .calc-cta{
+    text-align:center;margin-top:26px;
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .testimonial{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);padding:30px;
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .stars{color:var(--navy);font-size:.95rem;letter-spacing:2px;}
+  .testimonial p{font-size:.96rem;color:var(--ink);flex:1;}
+  .testimonial-author{
+    display:flex;align-items:center;gap:12px;
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  .author-avatar{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--navy);color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;
+  }
+  .author-name{font-weight:600;font-size:.92rem;}
+  .author-role{font-size:.8rem;color:var(--ink-soft);}
+
+  /* ---------- Final CTA ---------- */
+  .cta-final{
+    background:var(--navy);color:var(--white);
+    border-radius:var(--radius);
+    padding:64px 40px;text-align:center;
+  }
+  .cta-final h2{color:var(--white);font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:14px;}
+  .cta-final p{color:rgba(255,255,255,.78);max-width:540px;margin:0 auto 32px;}
+  .cta-final .hero-ctas{justify-content:center;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed;bottom:26px;left:50%;
+    transform:translate(-50%,20px);
+    background:var(--navy);color:var(--white);
+    padding:14px 22px;border-radius:999px;
+    font-size:.88rem;font-weight:500;
+    box-shadow:0 14px 30px -10px rgba(0,0,102,.5);
+    opacity:0;transition:opacity .35s ease, transform .35s ease;
+    z-index:999;pointer-events:none;
+    display:flex;align-items:center;gap:10px;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:48px 0 32px;
+  }
+  .footer-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:24px;margin-bottom:32px;
+  }
+  .footer-links{display:flex;gap:28px;}
+  .footer-links a{font-size:.9rem;color:var(--ink-soft);transition:color .2s ease;}
+  .footer-links a:hover{color:var(--navy);}
+  .footer-social{display:flex;gap:12px;}
+  .social-btn{
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--navy);transition:all .2s ease;
+  }
+  .social-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+  .footer-bottom{
+    font-size:.82rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    border-top:1px solid var(--line);padding-top:24px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;gap:48px;}
+    .hero-content{max-width:none;text-align:center;margin:0 auto;}
+    .hero-content .eyebrow{justify-content:center;}
+    .hero p.lead{margin:0 auto 34px;}
+    .hero-ctas{justify-content:center;}
+    .hero-note{margin:0 auto;text-align:left;}
+    .niches{grid-template-columns:repeat(2,1fr);}
+    .testimonials{grid-template-columns:1fr;}
+    .process{grid-template-columns:repeat(2,1fr);gap:40px 0;}
+    .process-step::before{display:none;}
+    .stats{grid-template-columns:repeat(2,1fr);gap:36px;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px;}
+    .hero{padding:130px 0 60px;}
+    .panel-metrics{grid-template-columns:1fr 1fr;}
+    .panel-controls{grid-template-columns:1fr;}
+    .niches{grid-template-columns:1fr;}
+    .calc{padding:24px 18px;}
+    .calc-body{grid-template-columns:1fr;}
+    .calc-arrow{transform:rotate(90deg);}
+    .calc-amount{font-size:1.4rem;min-width:auto;}
+    .process{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr 1fr;}
+    section{padding:64px 0;}
+    .cta-final{padding:46px 22px;}
+    .footer-top{flex-direction:column;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <img class="logo-img" src="data:image/png;base64,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" alt="Impacto Click">
+    <ul class="nav-links">
+      <li><a href="#nichos">Para quem é</a></li>
+      <li><a href="#painel">Painel</a></li>
+      <li><a href="#investimento">Investimento</a></li>
+      <li><a href="#processo">Como trabalhamos</a></li>
+      <li><a href="#depoimentos">Clientes</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20aumentar%20o%20n%C3%BAmero%20de%20clientes%20do%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener">Quero Clientes!</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <span class="eyebrow">tráfego pago para hotelaria &amp; gastronomia</span>
+      <h1>Mais <em>visitas</em>. Mais <em>pedidos</em>. Para o seu <em>restaurante</em> e <em>hotel</em> ou <em>pousada</em>.</h1>
+      <p class="lead">Criamos e gerenciamos campanhas de Google e Meta Ads pensadas para o seu restaurante, hotel ou pousada — trazendo mais visitas, mais pedidos e mais reservas todos os dias, sem complicação.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20aumentar%20o%20n%C3%BAmero%20de%20clientes%20do%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener">Quero mais clientes</a>
+        <button class="btn btn-ghost ig-cta" data-msg="Oi! Vi o site da Impacto Click e quero aumentar o número de clientes do meu negócio. Pode me ajudar?">Falar no Instagram →</button>
+      </div>
+      <p class="hero-note">Atendemos hotéis, pousadas, hostels, restaurantes, fast foods, donos de iFood e quiosques em todo o Brasil.</p>
+    </div>
+
+    <!-- ===== Painel interativo (elemento de assinatura) ===== -->
+    <div class="panel reveal" id="panel">
+      <div class="panel-head">
+        <div class="panel-title"><span class="live-dot"></span> painel impacto click — tempo real</div>
+        <div class="panel-tabs" role="tablist" aria-label="Selecionar tipo de negócio">
+          <button class="panel-tab active" data-niche="restaurante" role="tab" aria-selected="true">Restaurante</button>
+          <button class="panel-tab" data-niche="delivery" role="tab" aria-selected="false">Delivery / iFood</button>
+          <button class="panel-tab" data-niche="pousada" role="tab" aria-selected="false">Pousada / Hotel</button>
+          <button class="panel-tab" data-niche="hostel" role="tab" aria-selected="false">Hostel</button>
+          <button class="panel-tab" data-niche="quiosque" role="tab" aria-selected="false">Quiosque / Bar</button>
+        </div>
+      </div>
+
+      <div class="panel-controls" id="panel-controls">
+        <div class="panel-control">
+          <div class="panel-control-head">
+            <span class="panel-control-label">Investimento mensal</span>
+            <span class="panel-control-value" id="panel-invest-value">R$ 500</span>
+          </div>
+          <input type="range" class="panel-slider" id="panel-invest-slider" min="0" max="19" step="1" value="0" aria-label="Investimento mensal em mídia">
+        </div>
+        <div class="panel-control">
+          <div class="panel-control-head">
+            <span class="panel-control-label">Média de visitantes</span>
+            <span class="panel-control-value" id="panel-visit-value">1.000/mês</span>
+          </div>
+          <input type="range" class="panel-slider" id="panel-visit-slider" min="100" max="5000" step="50" value="1000" aria-label="Média de visitantes por mês">
+        </div>
+        <div class="panel-control">
+          <div class="panel-control-head">
+            <span class="panel-control-label">Ticket médio</span>
+            <span class="panel-control-value" id="panel-ticket-value">R$ 50</span>
+          </div>
+          <input type="range" class="panel-slider" id="panel-ticket-slider" min="15" max="400" step="5" value="50" aria-label="Ticket médio">
+        </div>
+      </div>
+
+      <div class="panel-metrics" id="panel-metrics"><!-- preenchido via JS --></div>
+
+      <div class="panel-chart-label">Investimento × receita gerada — últimos 6 meses</div>
+      <div class="panel-chart" id="panel-chart"><!-- preenchido via JS --></div>
+      <div class="chart-months" id="panel-months"><!-- preenchido via JS --></div>
+
+      <div class="panel-legend">
+        <span><span class="legend-swatch" style="background:rgba(255,255,255,.22)"></span> Investimento em mídia</span>
+        <span><span class="legend-swatch" style="background:#42e08a"></span> Receita gerada</span>
+      </div>
+
+      <p class="panel-foot">*Valores ilustrativos com base na média de campanhas geridas pela agência para cada segmento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NICHOS ========== -->
+<section id="nichos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">para quem é</span>
+      <h2>Feito para quem vive da casa cheia ou do pedido na porta</h2>
+      <p>Cada segmento tem um funil diferente. Por isso construímos campanhas específicas para a realidade de cada tipo de negócio.</p>
+    </div>
+
+    <div class="niches">
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18h18"/><path d="M7 9V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/><path d="M3 13h18"/></svg>
+        </div>
+        <h3>Hotéis &amp; Pousadas</h3>
+        <p>Campanhas para gerar reservas diretas, sem depender só de OTAs, e ocupar a baixa temporada.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="8" rx="1.5"/><rect x="3" y="13" width="18" height="8" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+        </div>
+        <h3>Hostels &amp; Albergues</h3>
+        <p>Anúncios para mochileiros e viajantes, com foco em ocupação de leitos e eventos da casa.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v6a2 2 0 0 0 2 2v12"/><path d="M11 2v8"/><path d="M15 2c0 4-2 5-2 9v11"/></svg>
+        </div>
+        <h3>Restaurantes</h3>
+        <p>Tráfego para reservas, eventos e fluxo no salão, com remarketing para quem já visitou.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.5 10a2 2 0 0 1-2 1.7H7.5a2 2 0 0 1-2-1.7L4 9Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        </div>
+        <h3>Fast Food &amp; Hamburguerias</h3>
+        <p>Criativos que dão água na boca e campanhas para horários de pico, raio de entrega e promoções.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+        </div>
+        <h3>Delivery &amp; Donos de iFood</h3>
+        <p>Estratégias para impulsionar seu cardápio digital e atrair pedidos diretos pelo WhatsApp.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8l4 6H4l4-6Z"/><path d="M4 8l8 5 8-5"/><path d="M12 13v9"/><path d="M8 22h8"/></svg>
+        </div>
+        <h3>Quiosques &amp; Bares</h3>
+        <p>Anúncios geolocalizados para movimentar o local em dias de praia, shows e eventos.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/><path d="M2.5 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L21.5 8H6"/></svg>
+        </div>
+        <h3>E-commerce</h3>
+        <p>Campanhas de aquisição e remarketing para vender mais na sua loja online, todos os dias.</p>
+      </div>
+
+      <div class="niche-card reveal">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5c0 3 2 4 2 7a3 3 0 0 0 6 0c0-3 2-4 2-7a5 5 0 0 0-5-5Z"/><path d="M9 21h6"/></svg>
+        </div>
+        <h3>Clínicas de Estética</h3>
+        <p>Anúncios para agendar procedimentos e atrair novos pacientes na sua região, entre outros segmentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACOMPANHAMENTO / CATÁLOGO DE SERVIÇOS ========== -->
+<section id="painel" class="section-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">catálogo de serviços</span>
+      <h2>Acompanhe seus resultados com reuniões semanais, sem planilha</h2>
+      <p>Você acompanha investimento, retorno e principais indicadores do seu negócio em reuniões semanais com a nossa equipe, sem precisar entender de tráfego pago.</p>
+    </div>
+
+    <div class="niches reveal">
+      <div class="niche-card">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Google Business Profile &amp; Meta Ads</h3>
+        <p>Configuramos seu perfil no Google e suas contas de anúncios corretamente, prontas para gerar resultado desde o primeiro dia.</p>
+      </div>
+
+      <div class="niche-card">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m7 9 2 2-2 2M13 13h4"/></svg>
+        </div>
+        <h3>Criação de sites e sistemas</h3>
+        <p>Sites, cardápios digitais e sistemas sob medida, feitos para transformar visitas em reservas e pedidos.</p>
+      </div>
+
+      <div class="niche-card">
+        <div class="niche-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3a1 1 0 0 0 1 1h3l4 4V6L7 10H4a1 1 0 0 0-1 1Z"/><path d="M16 8a5 5 0 0 1 0 8M19 5a9 9 0 0 1 0 14"/></svg>
+        </div>
+        <h3>Criação e gerenciamento de Estratégia midiática</h3>
+        <p>Criativos, públicos e otimização contínua das suas campanhas nas duas maiores plataformas de anúncios.</p>
+      </div>
+    </div>
+
+    <div class="services-cta reveal">
+      <a class="btn btn-primary" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Impacto%20Click!" target="_blank" rel="noopener">Saiba mais →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SIMULADOR DE INVESTIMENTO ========== -->
+<section id="investimento">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">simulador de investimento</span>
+      <h2>Quanto investir em mídia paga para o seu negócio?</h2>
+      <p>Escolha o segmento do seu negócio, selecione o investimento mensal e veja uma estimativa de retorno com base na média das campanhas que gerenciamos. Fique por dentro com reuniões semanais!</p>
+    </div>
+
+    <div class="calc reveal">
+      <div class="calc-tabs" role="tablist" aria-label="Segmento do negócio">
+        <button class="calc-tab active" data-segment="pousada" role="tab" aria-selected="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 18h18"/><path d="M7 9V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/><path d="M3 13h18"/></svg>
+          Pousadas
+        </button>
+        <button class="calc-tab" data-segment="restaurante" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v6a2 2 0 0 0 2 2v12"/><path d="M11 2v8"/><path d="M15 2c0 4-2 5-2 9v11"/></svg>
+          Restaurantes
+        </button>
+        <button class="calc-tab" data-segment="quiosque" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8l4 6H4l4-6Z"/><path d="M4 8l8 5 8-5"/><path d="M12 13v9"/><path d="M8 22h8"/></svg>
+          Quiosques
+        </button>
+        <button class="calc-tab" data-segment="hotel" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="8" rx="1.5"/><rect x="3" y="13" width="18" height="8" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+          Hotéis
+        </button>
+      </div>
+
+      <div class="calc-body">
+        <div class="calc-input">
+          <span class="calc-label">Investimento mensal em mídia</span>
+          <div class="calc-chips" id="calc-chips" role="group" aria-label="Selecionar investimento mensal"><!-- preenchido via JS --></div>
+        </div>
+
+        <div class="calc-arrow" aria-hidden="true">→</div>
+
+        <div class="calc-result">
+          <span class="calc-label light">Simulação de Retorno estimado</span>
+          <div class="calc-result-value" id="calc-result">R$ 116 mil/mês</div>
+          <div class="calc-roas" id="calc-roas">ROAS médio: 5.8x</div>
+        </div>
+      </div>
+
+      <p class="calc-note">*Estimativa com base no ROAS médio das campanhas geridas pela agência para este segmento. Resultados reais variam conforme oferta, sazonalidade e operação do negócio. No diagnóstico gratuito, mostramos qual faixa de investimento faz mais sentido para o seu momento.</p>
+
+      <div class="calc-cta">
+        <a class="btn btn-primary" id="calc-whatsapp-btn" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20fazer%20a%20minha%20simula%C3%A7%C3%A3o%20de%20investimento%20personalizada!" target="_blank" rel="noopener">Faça a Sua Simulação! →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESSO ========== -->
+<section id="processo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">como trabalhamos</span>
+      <h2>Um processo simples, do diagnóstico ao resultado</h2>
+      <p>Sem enrolação: entendemos seu negócio, montamos a estratégia certa e cuidamos da execução do início ao fim.</p>
+    </div>
+
+    <div class="process reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Diagnóstico</h3>
+        <p>Entendemos seu negócio, sazonalidade e o que já funcionou (ou não) até aqui.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Estratégia</h3>
+        <p>Definimos plataformas, públicos e metas com base no seu segmento.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Execução</h3>
+        <p>Criativos, anúncios e rastreamento configurados para gerar reservas, pedidos e visitas.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Otimização</h3>
+        <p>Ajustes contínuos com base nos dados do seu painel, semana após semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEPOIMENTOS ========== -->
+<section id="depoimentos" class="section-cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">clientes reais</span>
+      <h2>Negócios como o seu, vendendo todos os dias</h2>
+      <p>Histórias de quem já transformou investimento em anúncios em casa cheia e pedido na porta.</p>
+    </div>
+
+    <div class="testimonials reveal">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Em dois meses, nossa pousada saiu de fim de semana cheio e semana vazia para reservas direto todos os dias. O painel é tão simples que eu mesma acompanho pelo celular.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JL</div>
+          <div>
+            <div class="author-name">Juliana Lopes</div>
+            <div class="author-role">Pousada Vento Norte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Nosso hamburgueria começou a bater recorde de pedidos nas sextas e sábados. Os anúncios chegam exatamente na hora em que as pessoas estão decidindo o jantar.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RT</div>
+          <div>
+            <div class="author-name">Rafael Tavares</div>
+            <div class="author-role">Hamburgueria do Bairro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Finalmente uma agência que entende de hotelaria. Reduzimos o custo por reserva e aumentamos a ocupação do hostel mesmo fora de temporada.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MS</div>
+          <div>
+            <div class="author-name">Marina Souza</div>
+            <div class="author-role">Hostel Caminho Verde</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section>
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <span class="eyebrow" style="color:#9aa0ff;">vamos conversar?</span>
+      <h2>Pronto para encher a casa e lotar a agenda?</h2>
+      <p>Fale com a gente agora e receba uma análise gratuita do seu negócio, com sugestões já no primeiro contato.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-light" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20aumentar%20o%20n%C3%BAmero%20de%20clientes%20do%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <button class="btn btn-ghost ig-cta" style="border-color:#ffffff;color:#ffffff;" data-msg="Oi! Quero aumentar o número de clientes do meu negócio. Pode me ajudar?">Ver nosso Instagram ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <img class="logo-img" src="data:image/png;base64,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" alt="Impacto Click">
+        <p style="color:var(--ink-soft);font-size:.9rem;margin-top:10px;max-width:320px;">Tráfego pago para hotéis, pousadas, hostels, restaurantes, fast foods, delivery e quiosques.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#nichos">Para quem é</a></li>
+        <li><a href="#painel">Painel</a></li>
+        <li><a href="#investimento">Investimento</a></li>
+        <li><a href="#processo">Como trabalhamos</a></li>
+        <li><a href="#depoimentos">Clientes</a></li>
+      </ul>
+      <div class="footer-social">
+        <a class="social-btn" href="https://wa.me/558897143243?text=Ol%C3%A1!%20Quero%20aumentar%20o%20n%C3%BAmero%20de%20clientes%20do%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+        <button class="social-btn ig-cta" aria-label="Instagram" data-msg="Oi! Quero aumentar o número de clientes do meu negócio. Pode me ajudar?">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Impacto Click. Todos os direitos reservados.</span>
+      <span>Tráfego pago para hotelaria &amp; gastronomia</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  <span>Mensagem copiada! Cole na conversa do Instagram 💬</span>
+</div>
+
+<script>
+/* ====================== Escala real de investimento (compartilhada com o painel do topo) ====================== */
+const INVEST_STEPS = [500,700,1200,1500,1700,2000,3000,4000,5000,7000,10000,15000,20000,30000,40000,50000,65000,80000,100000,125000];
+
+function formatReais(valor){
+  if(valor >= 1000000){
+    return 'R$ ' + (valor/1000000).toFixed(1).replace('.', ',') + ' milhão' + (valor/1000000 >= 2 ? 'es' : '');
+  }
+  if(valor >= 1000){
+    return 'R$ ' + Math.round(valor/1000) + ' mil';
+  }
+  return 'R$ ' + Math.round(valor);
+}
+
+/* ====================== Dados do painel por nicho ====================== */
+/* convBase = % de visitantes que convertem em reserva/pedido com investimento base de referência */
+/* uplift = ganho percentual esperado na conversão ao rodar campanhas */
+const NICHES = {
+  restaurante: {custoLabel:'Custo por reserva', qtyLabel:'Reservas via Google', convBase:0.08, uplift:0.20, roasBase:4.6, retorno:[30,38,44,50,58,66]},
+  delivery:    {custoLabel:'Custo por pedido',  qtyLabel:'Pedidos no mês',       convBase:0.12, uplift:0.24, roasBase:6.4, retorno:[36,48,57,66,78,90]},
+  pousada:     {custoLabel:'Custo por reserva', qtyLabel:'Reservas no mês',      convBase:0.05, uplift:0.18, roasBase:5.8, retorno:[34,40,46,55,64,74]},
+  hostel:      {custoLabel:'Custo por reserva', qtyLabel:'Reservas no mês',      convBase:0.06, uplift:0.22, roasBase:5.1, retorno:[32,39,45,53,61,70]},
+  quiosque:    {custoLabel:'Custo por cliente', qtyLabel:'Comandas/mês',         convBase:0.10, uplift:0.26, roasBase:4.2, retorno:[33,40,47,54,60,68]}
+};
+const BASE_INVEST = 20000; /* em reais, usado como referência de escala */
+const INVEST = [35,36,37,38,39,40];
+const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun'];
+
+const metricsEl = document.getElementById('panel-metrics');
+const chartEl = document.getElementById('panel-chart');
+const monthsEl = document.getElementById('panel-months');
+const investSlider = document.getElementById('panel-invest-slider');
+const visitSlider = document.getElementById('panel-visit-slider');
+const ticketSlider = document.getElementById('panel-ticket-slider');
+const investValueEl = document.getElementById('panel-invest-value');
+const visitValueEl = document.getElementById('panel-visit-value');
+const ticketValueEl = document.getElementById('panel-ticket-value');
+
+let current = {};
+let activeNiche = 'restaurante';
+
+/* Calcula as 4 métricas com base no nicho selecionado + investimento, visitantes e ticket médio informados pelo usuário */
+function computeMetrics(nicheKey, investReais, visitantes, ticketMedio){
+  const data = NICHES[nicheKey];
+
+  /* quanto maior o investimento em relação à base, maior a taxa de conversão (economia de escala, com limites) */
+  const ratio = investReais / BASE_INVEST;
+  let convFactor = Math.pow(ratio, 0.15) * (1 + data.uplift);
+  convFactor = Math.max(0.7, Math.min(1.8, convFactor));
+  const convRate = Math.min(0.4, data.convBase * convFactor);
+
+  /* nunca deixa a quantidade cair a zero (evita divisão por zero no custo por contato) */
+  const qtd = Math.max(1, Math.round(visitantes * convRate));
+  const custo = investReais / qtd;
+
+  /* ROAS ancorado na média real de cada segmento, ajustado pelo ticket médio dentro de uma faixa realista
+     (evita o ROAS "quebrar" para valores irreais quando o investimento é alto e o público é pequeno) */
+  const ticketFactor = Math.max(0.6, Math.min(1.6, Math.pow(ticketMedio / 80, 0.3)));
+  const roas = data.roasBase * ticketFactor;
+
+  return [
+    {label:'Taxa de conversão projetada', value: convRate*100, fmt:'pct', delta:'+' + Math.round(data.uplift*100) + '%'},
+    {label:data.custoLabel, value:custo, fmt: custo < 10 ? 'brlx' : 'brl', delta:''},
+    {label:'ROAS médio', value:roas, fmt:'x', delta:''},
+    {label:data.qtyLabel, value:qtd, fmt:'int', delta:''}
+  ];
+}
+
+function fmtValue(v, type){
+  switch(type){
+    case 'pct': return v.toFixed(0) + '%';
+    case 'brl': return 'R$ ' + v.toFixed(0);
+    case 'brlx': return 'R$ ' + v.toFixed(1);
+    case 'x': return v.toFixed(1) + 'x';
+    default: return Math.round(v).toLocaleString('pt-BR');
+  }
+}
+
+/* anima um número de "from" até "to" */
+function animateValue(el, from, to, type, duration=700){
+  const start = performance.now();
+  function frame(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = from + (to - from) * eased;
+    el.textContent = fmtValue(val, type);
+    if(p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+function buildMetrics(metrics){
+  metricsEl.innerHTML = '';
+  metrics.forEach((m, i) => {
+    const div = document.createElement('div');
+    div.className = 'metric';
+    div.innerHTML = `
+      <span class="metric-label">${m.label}</span>
+      <span class="metric-value" data-idx="${i}">${fmtValue(0, m.fmt)}</span>
+      ${m.delta ? `<span class="metric-delta good">${m.delta}</span>` : ''}
+    `;
+    metricsEl.appendChild(div);
+  });
+}
+
+function buildChart(){
+  chartEl.innerHTML = '';
+  monthsEl.innerHTML = '';
+  for(let i=0;i<6;i++){
+    const group = document.createElement('div');
+    group.className = 'chart-group';
+    group.innerHTML = `<div class="bar invest" data-i="${i}" style="height:0%"></div><div class="bar retorno" data-i="${i}" style="height:0%"></div>`;
+    chartEl.appendChild(group);
+
+    const m = document.createElement('span');
+    m.textContent = MONTHS[i];
+    monthsEl.appendChild(m);
+  }
+}
+
+function applyNiche(key, animate=true){
+  activeNiche = key;
+  const niche = NICHES[key];
+  const investReais = INVEST_STEPS[parseInt(investSlider.value, 10)];
+  const visitantes = parseFloat(visitSlider.value);
+  const ticketMedio = parseFloat(ticketSlider.value);
+  const metrics = computeMetrics(key, investReais, visitantes, ticketMedio);
+
+  // métricas
+  let valueEls = metricsEl.querySelectorAll('.metric-value');
+  if(valueEls.length !== metrics.length){
+    buildMetrics(metrics);
+    valueEls = metricsEl.querySelectorAll('.metric-value');
+  }
+  const labelEls = metricsEl.querySelectorAll('.metric-label');
+  const deltaEls = metricsEl.querySelectorAll('.metric-delta');
+  metrics.forEach((m, i) => {
+    if(labelEls[i]) labelEls[i].textContent = m.label;
+    if(deltaEls[i]) deltaEls[i].textContent = m.delta;
+    const el = valueEls[i];
+    const from = current.metrics ? current.metrics[i].value : 0;
+    if(animate){ animateValue(el, from, m.value, m.fmt); }
+    else { el.textContent = fmtValue(m.value, m.fmt); }
+  });
+
+  // barras
+  const investBars = chartEl.querySelectorAll('.bar.invest');
+  const retornoBars = chartEl.querySelectorAll('.bar.retorno');
+  INVEST.forEach((v,i) => { investBars[i].style.height = v + '%'; });
+  niche.retorno.forEach((v,i) => { retornoBars[i].style.height = v + '%'; });
+
+  current = {metrics};
+}
+
+function updatePanelSliderLabels(){
+  const investReais = INVEST_STEPS[parseInt(investSlider.value, 10)];
+  investValueEl.textContent = formatReais(investReais);
+  visitValueEl.textContent = Math.round(parseFloat(visitSlider.value)).toLocaleString('pt-BR') + '/mês';
+  ticketValueEl.textContent = 'R$ ' + Math.round(parseFloat(ticketSlider.value));
+}
+
+buildMetrics(computeMetrics('restaurante', INVEST_STEPS[0], 1000, 50));
+buildChart();
+updatePanelSliderLabels();
+applyNiche('restaurante', false);
+
+document.querySelectorAll('.panel-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.panel-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected','false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    applyNiche(tab.dataset.niche, true);
+  });
+});
+
+investSlider.addEventListener('input', () => {
+  updatePanelSliderLabels();
+  applyNiche(activeNiche, true);
+});
+visitSlider.addEventListener('input', () => {
+  updatePanelSliderLabels();
+  applyNiche(activeNiche, true);
+});
+ticketSlider.addEventListener('input', () => {
+  updatePanelSliderLabels();
+  applyNiche(activeNiche, true);
+});
+
+/* ====================== Simulador de investimento (agora por opções, sem slider manual) ====================== */
+const CALC_DATA = {
+  pousada:     {roas:5.8},
+  restaurante: {roas:4.6},
+  quiosque:    {roas:4.2},
+  hotel:       {roas:5.4}
+};
+
+/* faixas de investimento pré-definidas, oferecidas como opções de clique */
+const CALC_CHIP_VALUES = [500, 1000, 3000, 5000, 10000, 20000];
+
+const calcChipsEl = document.getElementById('calc-chips');
+const calcResult = document.getElementById('calc-result');
+const calcRoas = document.getElementById('calc-roas');
+const calcWhatsappBtn = document.getElementById('calc-whatsapp-btn');
+
+let calcSegment = 'pousada';
+let calcChipIdx = 4; // começa em R$ 10 mil, referência mais comum
+let calcValue = CALC_CHIP_VALUES[calcChipIdx];
+let calcRetornoShown = calcValue * CALC_DATA.pousada.roas;
+
+/* extende o formatador para o texto ".../mês" usado no resultado do simulador */
+const _fmtValueOriginal = fmtValue;
+fmtValue = function(v, type){
+  if(type === 'reaisstr') return formatReais(v) + '/mês';
+  return _fmtValueOriginal(v, type);
+};
+
+function buildChips(){
+  calcChipsEl.innerHTML = '';
+  CALC_CHIP_VALUES.forEach((valor, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'calc-chip' + (i === calcChipIdx ? ' active' : '');
+    btn.textContent = formatReais(valor);
+    btn.setAttribute('aria-pressed', i === calcChipIdx ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      calcChipIdx = i;
+      calcValue = CALC_CHIP_VALUES[i];
+      document.querySelectorAll('.calc-chip').forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
+      renderCalc(true);
+    });
+    calcChipsEl.appendChild(btn);
+  });
+}
+
+function updateWhatsappMessage(){
+  const segmentLabels = {pousada:'pousada', restaurante:'restaurante', quiosque:'quiosque/bar', hotel:'hotel'};
+  const label = segmentLabels[calcSegment] || 'negócio';
+  const texto = `Olá! Simulei um investimento de ${formatReais(calcValue)}/mês para o meu ${label} no site da Impacto Click e quero fazer minha simulação personalizada com vocês!`;
+  calcWhatsappBtn.href = 'https://wa.me/558897143243?text=' + encodeURIComponent(texto);
+}
+
+function renderCalc(animate){
+  const data = CALC_DATA[calcSegment];
+  calcRoas.textContent = 'ROAS médio: ' + data.roas.toFixed(1) + 'x';
+
+  const novoRetorno = calcValue * data.roas;
+  if(animate){
+    animateValue(calcResult, calcRetornoShown, novoRetorno, 'reaisstr', 600);
+  } else {
+    calcResult.textContent = formatReais(novoRetorno) + '/mês';
+  }
+  calcRetornoShown = novoRetorno;
+
+  updateWhatsappMessage();
+}
+
+function setSegment(segment){
+  calcSegment = segment;
+  renderCalc(true);
+}
+
+document.querySelectorAll('.calc-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.calc-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected','false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    setSegment(tab.dataset.segment);
+  });
+});
+
+buildChips();
+renderCalc(false);
+
+
+const statEls = document.querySelectorAll('.stat-num');
+let statsAnimated = false;
+function animateStats(){
+  if(statsAnimated) return;
+  statsAnimated = true;
+  statEls.forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const start = performance.now();
+    const duration = 1200;
+    function frame(now){
+      const p = Math.min((now - start)/duration, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      const val = target * eased;
+      el.textContent = prefix + (target % 1 === 0 ? Math.round(val) : val.toFixed(1)) + suffix;
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+}
+
+/* ====================== Scroll reveal ====================== */
+const revealEls = document.querySelectorAll('.reveal');
+if(!('IntersectionObserver' in window)){
+  revealEls.forEach(el => el.classList.add('in'));
+  animateStats();
+} else {
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      if(entry.target.querySelector('.stat-num') || entry.target.classList.contains('stat')){
+        animateStats();
+      }
+      if(entry.target.id === 'panel'){
+        applyNiche(document.querySelector('.panel-tab.active').dataset.niche, true);
+      }
+    }
+  });
+}, {threshold:0.2});
+revealEls.forEach(el => observer.observe(el));
+}
+
+/* ====================== Instagram com mensagem personalizada ====================== */
+const IG_URL = 'https://www.instagram.com/agenciaimpactoclick/?next=%2F';
+const toast = document.getElementById('toast');
+let toastTimeout;
+
+document.querySelectorAll('.ig-cta').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const msg = btn.dataset.msg;
+    try{
+      await navigator.clipboard.writeText(msg);
+    }catch(e){ /* clipboard indisponível, segue o fluxo */ }
+
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 3200);
+
+    setTimeout(() => {
+      window.open(IG_URL, '_blank', 'noopener');
+    }, 350);
+  });
+});
+</script>
+</body>
+</html>
